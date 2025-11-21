@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Resultado da Partida</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+  body {
+    background: #111;
+    color: #fff;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  #victory-box {
+    background: #222;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 0 20px #000;
+  }
+
+  #winner-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    margin: 20px 0;
+    display: none;
+  }
+
+  .btn {
+    background: #4CAF50;
+    padding: 12px 25px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div id="victory-box">
+  <h1 id="title">Carregando...</h1>
+  <img id="winner-img">
+  <h2 id="score"></h2>
+  <div class="btn" onclick="window.location.href='index.html'">Jogar Novamente</div>
+</div>
+
+<script>
+  const data = JSON.parse(localStorage.getItem("matchResult"));
+
+  if (!data) {
+    document.getElementById("title").innerText = "Erro ao carregar resultado!";
+  } else {
+    const { points, winner, winnerCharacter } = data;
+
+    const p = Object.values(points);
+    document.getElementById("score").innerText =
+      `Placar final: ${p[0]} x ${p[1]}`;
+
+    const title = document.getElementById("title");
+    const img = document.getElementById("winner-img");
+
+    if (winner === "empate") {
+      title.innerText = "Empate!";
+      img.style.display = "none";
+    } else {
+      title.innerText = "Vencedor!";
+      img.src = "img/" + winnerCharacter + ".png"; 
+      img.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>

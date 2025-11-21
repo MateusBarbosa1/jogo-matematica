@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Math Duel</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="choose-screen" class="screen">
+    <h2>Escolha seu personagem</h2>
+    <div class="players">
+      <div class="player" data-char="steve">
+        <img src="img/steve.png" alt="steve com cabelo">
+        <div>Steve Com Cabelo</div>
+      </div>
+      <div class="player" data-char="thiago">
+        <img src="img/thiago.jpg" alt="thiago 244">
+        <div>Thiago 244</div>
+      </div>
+      <div class="player" data-char="pedro">
+        <img src="img/pedro.png" alt="pedro pikachu">
+        <div>Pedro Pikachu</div>
+      </div>
+      <div class="player" data-char="renata">
+        <img src="img/renata.png" alt="renata de ferro">
+        <div>Renata de Ferro</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="waiting-screen" class="screen" style="display:none">
+    <h2>Aguardando outro jogador...</h2>
+    <p id="waiting-info"></p>
+  </div>
+
+  <div id="game-screen" class="screen" style="display:none">
+    <h2>Partida</h2>
+    <div id="timer">02:00</div>
+    <div id="score">Você: 0 | Oponente: 0</div>
+
+    <div id="question-box">
+      <div id="question-text"></div>
+      <div id="choices"></div>
+      <button id="btn-next" style="display:none">Próxima</button>
+    </div>
+
+    <div id="end-box" style="display:none"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/client.js"></script>
+</body>
+</html>
